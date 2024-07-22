@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms'
 import { SignaturePadModule } from 'ngx-signaturepad';
-import { SignaturePad } from 'ngx-signaturepad/signature-pad';
 
 @Component({
   selector: 'app-signature',
