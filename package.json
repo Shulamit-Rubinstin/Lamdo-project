@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@almothafar/angular-signature-pad": "^5.0.1",
     "@angular/animations": "^17.2.0",
     "@angular/common": "^17.2.0",
     "@angular/compiler": "^17.2.0",
@@ -21,8 +22,11 @@
     "@angular/platform-server": "^17.2.0",
     "@angular/router": "^17.2.0",
     "@angular/ssr": "^17.2.0",
+    "@syncfusion/ej2-angular-inputs": "^26.1.42-ngcc",
     "express": "^4.18.2",
+    "ngx-signaturepad": "^0.0.10",
     "rxjs": "~7.8.0",
+    "signature_pad": "^5.0.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
