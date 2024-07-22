@@ -1,0 +1,57 @@
+<div class="form-container">
+    <img class="logo" src="../../assets/לוגו משרד החינוך.png">
+    <h2>לכבוד: הורי התלמיד/ה</h2>
+
+    <form [formGroup]="updateForm">
+        <label for="institutionName">שם מוסד</label>
+        <div class="input-line">
+            <input id="institutionName" formControlName="institutionName" />
+        </div>
+
+        <label for="institutionSergeant">סמל מוסד</label>
+        <div class="input-line">
+            <input id="institutionSergeant" formControlName="institutionSergeant" />
+        </div>
+
+        <label for="permission">רשות</label>
+        <div class="input-line">
+            <input id="permission" formControlName="permission" />
+        </div>
+
+        <label for="fromKosher">החלפת כשרות מ</label>
+        <div class="input-line">
+            <input id="fromKosher" formControlName="fromKosher" />
+        </div>
+
+        <label for="toKosher">אל</label>
+        <div class="input-line">
+            <input id="toKosher" formControlName="toKosher" />
+        </div>
+
+        <p class="note">
+            שלום וברכה,<br><br>
+            הנדון: הסכמת הורים להחלפת כשרות<br><br>
+            לאור בקשת הנהלת המוסד בו לומד ילדכם להחלפת הכשרות של ארוחת הצהריים מכשרות
+            <strong>{{ updateForm.get('fromKosher')?.value }}</strong> אל כשרות
+            <strong>{{ updateForm.get('toKosher')?.value }}</strong>.<br><br>
+            ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
+            1. שינוי הכשרות משמעו ייתכן שיוחלף ספק המזון שסיפק את המזון עבור המוסד החינוכי עד כה.<br>
+            2. ניתן לבקש החלפת כשרות פעם אחת בשנה בלבד.<br>
+            3. ניתן להחליף לכשרות מאושרת על ידי תכנית ההזנה בלבד.<br><br>
+            נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי. לפיכך,
+            ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
+        </p>
+
+        <button type="submit" [disabled]="!updateForm.valid">Submit</button>
+    </form>
+
+    <div class="footer">
+        <p>רח' דבורה הנביאה 2, ירושלים; 9510402 טל' 073-3931649 פקס 073-3931650 | E-mail: <a
+                href="mailto:haimmoy@education.gov.il">haimmoy&#64;education.gov.il</a></p>
+        <p>شارع دبورا هنبيئة 2, اورشليم-القدس, 9510402 هاتف 3931649-073 فاكس 3931650-073 | אתר האגף:
+            <a
+            href="mailto:haimmoy@education.gov.il"> www.edu.gov.il/yelednoarbesikun</a></p>
+        <p>מסמך זה עלול להכיל מידע המוגן לפי חוק הגנת הפרטיות – מוסרו שלא כדין עובר עבירה</p>
+        <img class="logodown" src="../../assets/לוגו למטה.png">
+    </div>
+</div>

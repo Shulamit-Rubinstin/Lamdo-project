@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {SignatureComponent} from './signature/signature.component'
+import { FormComponent } from './form/form.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,SignatureComponent],
+  imports: [RouterOutlet,SignatureComponent,FormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

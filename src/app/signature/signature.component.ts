@@ -19,7 +19,6 @@ export class SignatureComponent implements AfterViewInit {
     this.context = canvas.getContext('2d')!;
     this.context.lineWidth = 2;
     this.context.strokeStyle = 'purple';
-    // Add event listeners to handle drawing
     canvas.addEventListener('mousedown', (event) => this.startDrawing(event));
     canvas.addEventListener('mouseup', () => this.stopDrawing());
     canvas.addEventListener('mousemove', (event) => this.draw(event));
