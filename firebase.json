@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/LandoKosher/browser",
+    "public": "dist/lando-kosher/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
