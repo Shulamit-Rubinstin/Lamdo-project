@@ -25,7 +25,7 @@ export class FormComponent implements OnInit{
       permission:['',[Validators.required]],
       fromKosher:['',[Validators.required]],
       toKosher:['',[Validators.required]],
-      fulName: ['', [Validators.required]],
+      fullName: ['', [Validators.required]],
       class:['', [Validators.required]],
       parentsName:['',[Validators.required]],
       permissionF:['',[Validators.required]],
