@@ -14,10 +14,6 @@ signature-container {
   cursor: crosshair;
   margin-bottom: 80px; /* Add margin at the bottom of the canvas */
 }
-
-
-
-
 button:hover {
   background-color: #0056b3;
 }
