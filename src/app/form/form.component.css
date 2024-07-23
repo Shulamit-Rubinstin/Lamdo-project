@@ -60,8 +60,15 @@ h2 {
   margin: 0;
   flex: 1; /* גמישות מלאה לגדול לפי הצורך */
   white-space: nowrap; /* מונע מהטקסט לשבור שורה */
-  min-width: 100px; /* רוחב מינימלי של הפיסקה */
   box-sizing: border-box; /* כולל את גבול ה-border בגובה הכללי */
+}
+.long-line{
+  min-width: 200px; /* רוחב מינימלי של הפיסקה */
+
+}
+.short-line{
+  min-width: 100px; /* רוחב מינימלי של הפיסקה */
+
 }
 button {
   display: block;
