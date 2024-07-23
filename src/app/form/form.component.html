@@ -3,37 +3,32 @@
     <h2>לכבוד: הורי התלמיד/ה</h2>
 
     <form [formGroup]="updateForm">
-        <label for="institutionName">שם מוסד</label>
         <div class="input-line">
+            <label for="institutionName">שם מוסד</label>
             <input id="institutionName" formControlName="institutionName" />
         </div>
-
-        <label for="institutionSergeant">סמל מוסד</label>
         <div class="input-line">
+            <label for="institutionSergeant">סמל מוסד</label>
             <input id="institutionSergeant" formControlName="institutionSergeant" />
         </div>
-
-        <label for="permission">רשות</label>
         <div class="input-line">
+            <label for="permission">רשות</label>
             <input id="permission" formControlName="permission" />
         </div>
-
-        <label for="fromKosher">החלפת כשרות מ</label>
-        <div class="input-line">
-            <input id="fromKosher" formControlName="fromKosher" />
-        </div>
-
-        <label for="toKosher">אל</label>
-        <div class="input-line">
-            <input id="toKosher" formControlName="toKosher" />
-        </div>
-
         <p class="note">
             שלום וברכה,<br><br>
             הנדון: הסכמת הורים להחלפת כשרות<br><br>
             לאור בקשת הנהלת המוסד בו לומד ילדכם להחלפת הכשרות של ארוחת הצהריים מכשרות
-            <strong>{{ updateForm.get('fromKosher')?.value }}</strong> אל כשרות
-            <strong>{{ updateForm.get('toKosher')?.value }}</strong>.<br><br>
+            <strong>
+                <span class="inline-input">
+                    <input id="fromKosherInline" formControlName="fromKosher" />
+                </span>
+            </strong> אל כשרות
+            <strong>
+                <span class="inline-input">
+                    <input id="toKosherInline" formControlName="toKosher" />
+                </span>
+            </strong>.<br><br>
             ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
             1. שינוי הכשרות משמעו ייתכן שיוחלף ספק המזון שסיפק את המזון עבור המוסד החינוכי עד כה.<br>
             2. ניתן לבקש החלפת כשרות פעם אחת בשנה בלבד.<br>
@@ -41,16 +36,57 @@
             נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי. לפיכך,
             ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
         </p>
-
+        <div class="form2">
+            <span class="inline-input">
+                <label for="fullName">שם הילד/ה</label>
+                <input id="fullName" formControlName="fullName" />
+            </span>
+            <span class="inline-input">
+                <label for="class">כיתה</label>
+                <input id="class" formControlName="class" />
+            </span>
+            <div class="input-line">
+                <label for="parentsName">שם ההורה (שם פרטי+משפחה)</label>
+                <input id="parentsName" formControlName="parentsName" />
+            </div>
+            <div class="inline-input">
+                <label for="institutionNameF">שם מוסד: </label>
+                <p class="input-label" formControlName="institutionNameF">{{ updateForm.get('institutionName')?.value }}
+                </p>
+            </div>
+            <div class="inline-input">
+                <label for="permissionF"> רשות: </label>
+                <p class="input-label" formControlName="permissionF">{{ updateForm.get('permission')?.value }}</p>
+            </div>
+            <div class="centered-inputs">
+                <div class="input-line">
+                    <label for="fromKosherF">מכשרות: </label>
+                    <p class="input-label" formControlName="fromKosherF">{{ updateForm.get('fromKosher')?.value }}</p>
+                </div>
+                <div class="input-line ">
+                    <label class="input-line-c" for="toKosherF">לכשרות: </label>
+                    <p class="input-label" formControlName="toKosherF">{{ updateForm.get('toKosher')?.value }}</p>
+                </div>
+                <div class="input-line">
+                    <label for="date">תאריך</label>
+                    <input id="date" type="date" formControlName="date" />
+                </div>
+                <div class="input-line">
+                    <label for="signature">חתימה</label>
+                    <app-signature></app-signature>
+                </div>
+            </div>
+        </div>
         <button type="submit" [disabled]="!updateForm.valid">Submit</button>
     </form>
 
     <div class="footer">
-        <p>רח' דבורה הנביאה 2, ירושלים; 9510402 טל' 073-3931649 פקס 073-3931650 | E-mail: <a
-                href="mailto:haimmoy@education.gov.il">haimmoy&#64;education.gov.il</a></p>
+        <p>רח' דבורה הנביאה 2, ירושלים; 9510402 טל' 073-3931649 פקס 073-3931650 | E-mail:
+            <a href="mailto:haimmoy@education.gov.il">haimmoy&#64;education.gov.il</a>
+        </p>
         <p>شارع دبورا هنبيئة 2, اورشليم-القدس, 9510402 هاتف 3931649-073 فاكس 3931650-073 | אתר האגף:
-            <a
-            href="mailto:haimmoy@education.gov.il"> www.edu.gov.il/yelednoarbesikun</a></p>
+            <a href="mailto:haimmoy@education.gov.il"> www.edu.gov.il/yelednoarbesikun</a>
+        </p>
         <p>מסמך זה עלול להכיל מידע המוגן לפי חוק הגנת הפרטיות – מוסרו שלא כדין עובר עבירה</p>
         <img class="logodown" src="../../assets/לוגו למטה.png">
     </div>
