@@ -135,5 +135,10 @@ button:hover {
   white-space: nowrap; /* מונע מהטקסט לשבור שורה */
 }
 
+.approval-section{
+  text-align: center;
+
+}
+
 
 

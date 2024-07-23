@@ -24,7 +24,7 @@ export class FormComponent implements OnInit{
       institutionSergeant:['', [Validators.required]],
       permission:['',[Validators.required]],
       fromKosher:['',[Validators.required]],
-      toKosher:['',[Validators.required]],
+      toKosher:['לנדא',[Validators.required]],
       fullName: ['', [Validators.required]],
       class:['', [Validators.required]],
       parentsName:['',[Validators.required]],
