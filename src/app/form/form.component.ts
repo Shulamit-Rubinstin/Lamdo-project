@@ -1,63 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // הוסף כאן
-import{SignatureComponent}from '../signature/signature.component'
-import jsPDF from 'jspdf';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-
-
+import { SignatureComponent } from '../signature/signature.component'
+import { saveAs } from 'file-saver';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule,SignatureComponent],
+  imports: [ReactiveFormsModule, SignatureComponent],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent implements OnInit{
+export class FormComponent implements OnInit {
   public updateForm!: FormGroup;
-  
-  constructor(private fb: FormBuilder){ }
+  @ViewChild('formContainer') formContainer!: ElementRef;
+
+  constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.updateForm = this.fb.group({
       institutionName: ['', [Validators.required]],
-      institutionSergeant:['', [Validators.required]],
-      permission:['',[Validators.required]],
-      fromKosher:['',[Validators.required]],
-      toKosher:['לנדא',[Validators.required]],
+      institutionSergeant: ['', [Validators.required]],
+      permission: ['', [Validators.required]],
+      fromKosher: ['', [Validators.required]],
+      toKosher: ['לנדא', [Validators.required]],
       fullName: ['', [Validators.required]],
-      class:['', [Validators.required]],
-      parentsName:['',[Validators.required]],
-      permissionF:['',[Validators.required]],
-      toKosherF:['',[Validators.required]],
-      institutionNameF:['',[Validators.required]],
-      fromKosherF:['',[Validators.required]],
-      date:[Date,[Validators.required]],
+      class: ['', [Validators.required]],
+      parentsName: ['', [Validators.required]],
+      permissionF: ['', [Validators.required]],
+      toKosherF: ['', [Validators.required]],
+      institutionNameF: ['', [Validators.required]],
+      fromKosherF: ['', [Validators.required]],
+      date: [Date, [Validators.required]],
     });
   }
-  
-  generatePDF() {
-    const docDefinition = {
-      content: [
-        { text: 'לכבוד: הורי התלמיד/ה', style: 'header' },
-        { text: `שם מוסד: ${this.updateForm.get('institutionName')?.value || ''}` },
-        { text: `סמל מוסד: ${this.updateForm.get('institutionSergeant')?.value || ''}` },
-        { text: `רשות: ${this.updateForm.get('permission')?.value || ''}` },
-        { text: `מכשרות: ${this.updateForm.get('fromKosher')?.value || ''}` },
-        { text: `לכשרות: ${this.updateForm.get('toKosher')?.value || ''}` },
-        { text: `תאריך: ${this.updateForm.get('date')?.value || ''}` },
-        { text: 'חתימה: ...' }
-      ],
-      styles: {
-        header: {
-          fontSize: 18,
-          bold: true,
-          
-        }
-      }
-    };
-  
-    pdfMake.createPdf(docDefinition).download('form.pdf');
+
+  savePDF(data: any, filename: string): void {
+    const blob = new Blob([data], { type: 'application/pdf' });
+
+    const file = new File([blob], filename, { type: 'application/pdf' });
+
+    saveAs(file);
   }
-  
+  generatePDF(): void {
+    const sendButton = document.querySelector('button[type="button"]');
+  if (sendButton) {
+    sendButton.classList.add('hidden'); // Add a CSS class to hide the butto
+    }
+    html2canvas(this.formContainer.nativeElement).then((canvas: any) => {
+      if (sendButton) {
+        sendButton.classList.remove('hidden'); // Remove the hidden class to show the button back
+       }
+      // Convert the canvas to a data URL
+      const imgData = canvas.toDataURL('image/png');
+
+      // Set the width and height of the PDF to match the canvas
+      const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+
+      // Save the PDF
+      pdf.save('document.pdf');
+    });
+  }
+
 }
+
