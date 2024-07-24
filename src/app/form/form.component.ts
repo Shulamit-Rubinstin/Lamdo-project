@@ -56,6 +56,7 @@ export class FormComponent implements OnInit {
       // Set the width and height of the PDF to match the canvas
       const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.text('Your text here', 10, 10); // Adjust the position as needed
       // Save the PDF
       pdf.save('document.pdf');
     });

@@ -9,6 +9,9 @@
   display: block;
   margin: 0 auto 20px;
 }
+.hidden {
+  display: none;
+}
 
 .form2{
   direction: rtl; /* יישור טקסט מימין לשמאל */
