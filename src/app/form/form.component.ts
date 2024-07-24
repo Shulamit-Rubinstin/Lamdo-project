@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // הוסף כאן
 import { SignatureComponent } from '../signature/signature.component'
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { jsPDF } from 'jspdf';
@@ -35,12 +35,6 @@ export class FormComponent implements OnInit {
       fromKosherF: ['', [Validators.required]],
       date: [Date, [Validators.required]],
     });
-  }
-
-  savePDF(data: any, filename: string): void {
-    const blob = new Blob([data], { type: 'application/pdf' });
-    const file = new File([blob], filename, { type: 'application/pdf' });
-    saveAs(file);
   }
   generatePDF(): void {
     const sendButton = document.querySelector('button[type="button"]');
