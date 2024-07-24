@@ -39,9 +39,7 @@ export class FormComponent implements OnInit {
 
   savePDF(data: any, filename: string): void {
     const blob = new Blob([data], { type: 'application/pdf' });
-
     const file = new File([blob], filename, { type: 'application/pdf' });
-
     saveAs(file);
   }
   generatePDF(): void {
@@ -55,11 +53,9 @@ export class FormComponent implements OnInit {
        }
       // Convert the canvas to a data URL
       const imgData = canvas.toDataURL('image/png');
-
       // Set the width and height of the PDF to match the canvas
       const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-
       // Save the PDF
       pdf.save('document.pdf');
     });
