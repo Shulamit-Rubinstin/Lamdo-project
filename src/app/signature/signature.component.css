@@ -1,17 +1,9 @@
-.signature-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Align items to the bottom */
-  align-items: center;
-  height: 150px; /* Set a fixed height for the container */
-  margin-top: 20px;
-  position: relative; /* Add this to position the buttons at the bottom */
-}
 
 .canvas-element {
-  border: 1px solid #000; /* Add a full black border */
+  border-bottom: 1px solid #000; /* Add a bottom border instead of a full border */
   cursor: crosshair;
   margin-bottom: 10px; /* Adjust margin at the bottom of the canvas */
+
 }
 
 button:hover {
@@ -21,12 +13,13 @@ button:hover {
 button:disabled {
   background-color: #ccc;
 }
-
 button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
+  /* border-radius: 5px; */
   cursor: pointer;
   align-self: flex-end; /* Align the buttons to the bottom */
 }
+

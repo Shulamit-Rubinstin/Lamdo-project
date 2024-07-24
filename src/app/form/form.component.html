@@ -4,18 +4,18 @@
     <form [formGroup]="updateForm">
         <p>לכבוד: הורי התלמיד/ה</p>
         <div class="input-line">
-            <label for="institutionName">שם מוסד</label>
+            <label for="institutionName">שם מוסד </label>
             <input id="institutionName" formControlName="institutionName" />
         </div>
         <div class="input-line">
-            <label for="institutionSergeant">סמל מוסד</label>
+            <label for="institutionSergeant">סמל מוסד </label>
             <input id="institutionSergeant" formControlName="institutionSergeant" />
         </div>
         <div class="input-line">
-            <label for="permission">רשות</label>
+            <label for="permission">רשות </label>
             <input id="permission" formControlName="permission" />
         </div>
-        <p class="note">
+        <p class="note ">
             שלום וברכה,<br><br>
             <span class="centered-text">
                 הנדון: <span class="highlighted-text">הסכמת הורים להחלפת כשרות</span>
@@ -25,7 +25,7 @@
                 <span class="inline-input">
                     <input id="fromKosherInline" formControlName="fromKosher" />
                 </span>
-            </strong> אל כשרות
+            </strong> אל כשרות: 
             <strong>
                 <span class="inline-input">
                     <input id="toKosherInline" formControlName="toKosher" />
@@ -40,15 +40,15 @@
         </p>
         <div class="form2">
             <span class="inline-input">
-                <label for="fullName">שם הילד/ה</label>
+                <label for="fullName">שם הילד/ה: </label>
                 <input id="fullName" formControlName="fullName" />
             </span>
             <span class="inline-input">
-                <label for="class">כיתה</label>
+                <label for="class">כיתה: </label>
                 <input id="class" formControlName="class" />
             </span>
             <div class="input-line">
-                <label for="parentsName">שם ההורה (שם פרטי+משפחה)</label>
+                <label for="parentsName">שם ההורה (שם פרטי+משפחה): </label>
                 <input id="parentsName" formControlName="parentsName" />
             </div>
             <div class="inline-input">
@@ -73,7 +73,7 @@
                     <p class="input-label short-line" >{{ updateForm.get('toKosher')?.value }}</p>
                 </div>
                 <div class="input-line">
-                    <label for="date">תאריך</label>
+                    <label for="date">תאריך:</label>
                     <input id="date" type="date" formControlName="date" />
                 </div>
                 <div class="input-line signature">

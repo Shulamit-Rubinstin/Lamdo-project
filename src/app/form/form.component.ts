@@ -2,9 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // הוסף כאן
 import { SignatureComponent } from '../signature/signature.component'
-// import { saveAs } from 'file-saver';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 @Component({
@@ -17,7 +15,6 @@ import html2canvas from 'html2canvas';
 export class FormComponent implements OnInit {
   public updateForm!: FormGroup;
   @ViewChild('formContainer') formContainer!: ElementRef;
-
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.updateForm = this.fb.group({
@@ -47,13 +44,14 @@ export class FormComponent implements OnInit {
        }
       // Convert the canvas to a data URL
       const imgData = canvas.toDataURL('image/png');
+
       // Set the width and height of the PDF to match the canvas
       const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+
       // Save the PDF
       pdf.save('document.pdf');
     });
   }
-
 }
 
