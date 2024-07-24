@@ -1,8 +1,8 @@
 <div #formContainer class="form-container">
     <img class="logo" src="../../assets/לוגו משרד החינוך.png">
-    <h2>לכבוד: הורי התלמיד/ה</h2>
-
+    
     <form [formGroup]="updateForm">
+        <p>לכבוד: הורי התלמיד/ה</p>
         <div class="input-line">
             <label for="institutionName">שם מוסד</label>
             <input id="institutionName" formControlName="institutionName" />
@@ -17,7 +17,9 @@
         </div>
         <p class="note">
             שלום וברכה,<br><br>
-            הנדון: הסכמת הורים להחלפת כשרות<br><br>
+            <span class="centered-text">
+                הנדון: <span class="highlighted-text">הסכמת הורים להחלפת כשרות</span>
+            </span><br><br>
             לאור בקשת הנהלת המוסד בו לומד ילדכם להחלפת הכשרות של ארוחת הצהריים מכשרות
             <strong>
                 <span class="inline-input">
