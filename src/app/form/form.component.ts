@@ -61,7 +61,7 @@ export class FormComponent implements OnInit {
 
       pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
       const pdfBlob = pdf.output('blob');
-
+      // pdf.save('document.pdf');
       this.sendEmail(pdfBlob);
     });
   }
