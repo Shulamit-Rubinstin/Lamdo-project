@@ -1,9 +1,12 @@
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // הוסף כאן
 import { SignatureComponent } from '../signature/signature.component'
+
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 @Component({
   selector: 'app-form',
   standalone: true,
@@ -21,7 +24,7 @@ export class FormComponent implements OnInit {
       institutionSergeant: ['', [Validators.required]],
       permission: ['', [Validators.required]],
       fromKosher: ['', [Validators.required]],
-      toKosher: ['לנדא', [Validators.required]],
+      toKosher: ['רבני העיר בני ברק הרב לנדא והרב רוזנבלט', [Validators.required]],
       fullName: ['', [Validators.required]],
       class: ['', [Validators.required]],
       parentsName: ['', [Validators.required]],
@@ -32,25 +35,61 @@ export class FormComponent implements OnInit {
       date: [Date, [Validators.required]],
     });
   }
-  generatePDF(): void {
-    const sendButton = document.querySelector('button[type="button"]');
+  generatePDF() {
+    const sendButton = document.getElementById('formContainer')!;
     if (sendButton) {
-      sendButton.classList.add('hidden'); // Add a CSS class to hide the butto
+      sendButton.classList.add('hidden');
     }
-
-    html2canvas(this.formContainer.nativeElement).then((canvas: any) => {
+    const options = {
+      useCORS: true,
+      logging: true,
+      willReadFrequently: true
+    };
+    html2canvas(this.formContainer.nativeElement, options).then((canvas: any) => {
       if (sendButton) {
-        sendButton.classList.remove('hidden'); // Remove the hidden class to show the button back
+        sendButton.classList.remove('hidden');
       }
+      const imgData = canvas.toDataURL('image/jpeg', 0.3);
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-      const imgData = canvas.toDataURL('image/png');
-      // Set the width and height of the PDF to match the canvas
-      const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-      // Save the PDF
-      pdf.save('document.pdf');
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+      const pdfBlob = pdf.output('blob');
+
+      this.sendEmail(pdfBlob);
     });
   }
+  public sendEmail(pdfBlob: Blob) {
+    console.log('Sending email...');
 
+
+    const pdfFile = new File([pdfBlob], 'form_data.pdf', { type: 'application/pdf' });
+    const templateParams = {
+      service_id: 'service_w69f64v',
+      template_id: 'template_828xdaa',
+      user_id: '4_U5BxpQyvCU_USyQ',
+      attachment: pdfFile
+    };
+
+    emailjs
+      .send('service_w69f64v', 'template_828xdaa', templateParams, {
+        publicKey: '4_U5BxpQyvCU_USyQ',
+      }
+      )
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text, templateParams);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        },
+      );
+  }
 }
 
