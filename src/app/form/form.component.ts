@@ -6,10 +6,11 @@ import { SignatureComponent } from '../signature/signature.component'
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { DateFormatPipe } from '../date-format.pipe';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, SignatureComponent],
+  imports: [ReactiveFormsModule, SignatureComponent,DateFormatPipe],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
@@ -32,7 +33,7 @@ export class FormComponent implements OnInit {
       toKosherF: ['', [Validators.required]],
       institutionNameF: ['', [Validators.required]],
       fromKosherF: ['', [Validators.required]],
-      date: [Date, [Validators.required]],
+      date: [new Date(), [Validators.required]],
     });
   }
   generatePDF(): void {
