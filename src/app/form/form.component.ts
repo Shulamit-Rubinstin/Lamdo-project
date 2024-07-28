@@ -50,7 +50,7 @@ export class FormComponent implements OnInit {
       // Set the width and height of the PDF to match the canvas
       const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
       pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-
+      this.sendMail()
       // Save the PDF
       pdf.save('document.pdf');
     });
@@ -64,7 +64,7 @@ export class FormComponent implements OnInit {
       reader.onload = () => {
         const base64File = reader.result?.toString().split(',')[1];
          const templateParams = {
-          to_email: 'recipient@example.com',
+          to_email: 'r0533147262@gmail.com',
           subject: 'Test Subject',
           message: 'Test Body',
           attachment: base64File
