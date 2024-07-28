@@ -16,7 +16,7 @@
             <input id="permission" formControlName="permission" />
         </div>
         <p class="note ">
-            שלום וברכה,<br><br>
+            שלום וברכה,<br>
             <span class="centered-text">
                 הנדון: <span class="highlighted-text">הסכמת הורים להחלפת כשרות</span>
             </span><br><br>
@@ -27,15 +27,16 @@
                 </span>
             </strong> אל כשרות: 
             <strong>
-                <span class="inline-input">
-                    <input id="toKosherInline" formControlName="toKosher" />
+                <span class="inline-input ">
+                    <input id="toKosherInline" formControlName="toKosher" readonly />
                 </span>
             </strong>.<br><br>
             ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
             1. שינוי הכשרות משמעו ייתכן שיוחלף ספק המזון שסיפק את המזון עבור המוסד החינוכי עד כה.<br>
             2. ניתן לבקש החלפת כשרות פעם אחת בשנה בלבד.<br>
             3. ניתן להחליף לכשרות מאושרת על ידי תכנית ההזנה בלבד.<br><br>
-            נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי. לפיכך,
+            נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי.<br>
+             לפיכך,
             ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
         </p>
         <div class="form2">
@@ -61,8 +62,10 @@
                 <p class="input-label long-line" >{{ updateForm.get('permission')?.value }}</p>
             </div>
             <div class="approval-section">
-                <p>הנני מאשר / לא מאשר (יש להקיף בעיגול) שינוי הכשרות במוסד</p>
-              </div>
+                <p>
+                  <span class="circle">הנני מאשר</span> / לא מאשר (יש להקיף בעיגול) שינוי הכשרות במוסד
+                </p>
+              </div>              
             <div class="centered-inputs">
                 <div class="input-line">
                     <label for="fromKosherF">מכשרות: </label>
