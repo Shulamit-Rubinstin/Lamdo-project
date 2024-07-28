@@ -7,7 +7,6 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import { DateFormatPipe } from '../date-format.pipe';
-import { google } from 'googleapis';
 
 @Component({
   selector: 'app-form',
@@ -38,24 +37,31 @@ export class FormComponent implements OnInit {
       date: [new Date(), [Validators.required]],
     });
   }
+
   generatePDF(): void {
     const sendButton = document.querySelector('button[type="button"]');
     const pdfWidth = 210; // specify width in mm (A4 size)
     const pdfHeight = 297; // specify height in mm (A4 size)
+    const imageQuality = 0.4; // adjust the image quality as needed (0.0 - 1.0)
+
     if (sendButton) {
-      sendButton.classList.add('hidden'); // Add a CSS class to hide the butto
+      sendButton.classList.add('hidden'); // Add a CSS class to hide the button
     }
-    html2canvas(this.formContainer.nativeElement).then((canvas: any) => {
+
+    html2canvas(this.formContainer.nativeElement, { scale: 2 }).then((canvas: any) => {
       if (sendButton) {
         sendButton.classList.remove('hidden'); // Remove the hidden class to show the button back
       }
-      const imgData = canvas.toDataURL('image/png');
+
+      const imgData = canvas.toDataURL('image/jpeg', imageQuality);
       const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
       const pdfBlob = pdf.output('blob');
-      // Save the PDF
-      this.pdfFile = pdf.save('document.pdf');
-      this.sendMail()
+
+      pdf.save('document.pdf');
+      this.sendMail();
+
     });
   }
   sendMail() {
@@ -75,7 +81,7 @@ export class FormComponent implements OnInit {
             },
           ],
         };
-        emailjs.send('service_w69f64v', 'template_828xdaa', {content: base64File}, '4_U5BxpQyvCU_USyQ')
+        emailjs.send('service_w69f64v', 'template_828xdaa', { content: base64File }, '4_U5BxpQyvCU_USyQ')
           .then((response: EmailJSResponseStatus) => {
             console.log("Mail sent successfully!", response.status, response.text);
           }).catch((error) => {
