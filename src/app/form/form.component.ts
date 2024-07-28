@@ -7,17 +7,19 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 import { DateFormatPipe } from '../date-format.pipe';
+import { google } from 'googleapis';
+
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, SignatureComponent,DateFormatPipe],
+  imports: [ReactiveFormsModule, SignatureComponent, DateFormatPipe],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
 export class FormComponent implements OnInit {
   public updateForm!: FormGroup;
   @ViewChild('formContainer') formContainer!: ElementRef;
-  pdfFile: File | null = null;
+  pdfFile: jsPDF | null = null;
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.updateForm = this.fb.group({
@@ -38,46 +40,49 @@ export class FormComponent implements OnInit {
   }
   generatePDF(): void {
     const sendButton = document.querySelector('button[type="button"]');
-  if (sendButton) {
-    sendButton.classList.add('hidden'); // Add a CSS class to hide the butto
+    const pdfWidth = 210; // specify width in mm (A4 size)
+    const pdfHeight = 297; // specify height in mm (A4 size)
+    if (sendButton) {
+      sendButton.classList.add('hidden'); // Add a CSS class to hide the butto
     }
     html2canvas(this.formContainer.nativeElement).then((canvas: any) => {
       if (sendButton) {
         sendButton.classList.remove('hidden'); // Remove the hidden class to show the button back
-       }
-      // Convert the canvas to a data URL
+      }
       const imgData = canvas.toDataURL('image/png');
-
-      // Set the width and height of the PDF to match the canvas
-      const pdf = new jsPDF('p', 'mm', [canvas.width, canvas.height]);
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-      this.sendMail()
+      const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      const pdfBlob = pdf.output('blob');
       // Save the PDF
-      pdf.save('document.pdf');
+      this.pdfFile = pdf.save('document.pdf');
+      this.sendMail()
     });
   }
-
-
   sendMail() {
     if (this.pdfFile) {
       console.log("in mail!!!")
       const reader = new FileReader();
       reader.onload = () => {
         const base64File = reader.result?.toString().split(',')[1];
-         const templateParams = {
+        const templateParams = {
           to_email: 'r0533147262@gmail.com',
           subject: 'Test Subject',
           message: 'Test Body',
-          attachment: base64File
+          attachments: [
+            {
+              name: 'document.pdf',
+              data: base64File,
+            },
+          ],
         };
-        emailjs.send('service_w69f64v', 'template_828xdaa', templateParams, '4_U5BxpQyvCU_USyQ')
+        emailjs.send('service_w69f64v', 'template_828xdaa', {content: base64File}, '4_U5BxpQyvCU_USyQ')
           .then((response: EmailJSResponseStatus) => {
             console.log("Mail sent successfully!", response.status, response.text);
           }).catch((error) => {
             console.error("Failed to send mail:", error);
           });
       };
-      reader.readAsDataURL(this.pdfFile);
+      //  reader.readAsDataURL(this.pdfFile);
     } else {
       alert('Please generate the PDF before sending.');
     }
