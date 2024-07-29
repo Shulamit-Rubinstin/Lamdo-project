@@ -84,8 +84,8 @@ export class FormComponent implements OnInit {
     }, 'WYEy2hfn7R_lvrv4e',)
       .then(
         (response) => {
-          console.log('SUCCESS!', response.status, response.text, templateParams);
           this.showSuccessMessage = true;
+          console.log('SUCCESS!', response.status, response.text, templateParams);
         },
         (error) => {
           console.log('FAILED...', error);

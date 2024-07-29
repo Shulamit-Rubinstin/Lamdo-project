@@ -198,7 +198,12 @@ button:hover {
     font-size: 12px;
   }
   .footer {
-    font-size: 8x;
+    font-size: 8px;
+    margin-top: 20px;
+    line-height: 1.2;
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    text-align: center;
   }
 
   .footer p {
@@ -218,7 +223,7 @@ button:hover {
   }
 
   .note {
-    font-size: 10px;
+    font-size: 9px;
     /* margin-right: 4%; */
   }
 
