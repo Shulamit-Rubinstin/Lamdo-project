@@ -1,32 +1,24 @@
 .formContainer {
-  direction: rtl;
-  /* יישור טקסט מימין לשמאל */
-  text-align: right;
-  /* יישור הטקסט בצד ימין */
+  direction: rtl; /* יישור טקסט מימין לשמאל */
+  text-align: right; /* יישור הטקסט בצד ימין */
   padding: 10px;
   /* border: 1px solid #000; */
   margin: 10px auto;
   width: 100%;
-  max-width: 600px;
-  /* הגבלת רוחב המיכל */
+  max-width: 600px; /* הגבלת רוחב המיכל */
   display: block;
   margin: 0 auto 20px;
   font-family: David;
   font-size: 12px;
 }
-
 .centered-text {
-  display: block;
-  /* גורם לאלמנט לקחת שורה שלמה */
-  text-align: center;
-  /* יישור הטקסט למרכז */
+  display: block; /* גורם לאלמנט לקחת שורה שלמה */
+  text-align: center; /* יישור הטקסט למרכז */
 }
 
 .highlighted-text {
-  font-weight: bold;
-  /* הופך את הטקסט למודגש */
-  text-decoration: underline;
-  /* מוסיף קו תחתי */
+  font-weight: bold; /* הופך את הטקסט למודגש */
+  text-decoration: underline; /* מוסיף קו תחתי */
   display: inline-block;
 
 }
@@ -35,11 +27,9 @@
   display: none;
 }
 
-.form2 {
-  direction: rtl;
-  /* יישור טקסט מימין לשמאל */
-  text-align: right;
-  /* יישור הטקסט בצד ימין */
+.form2{
+  direction: rtl; /* יישור טקסט מימין לשמאל */
+  text-align: right; /* יישור הטקסט בצד ימין */
   border: 1px solid #000;
   padding: 2px;
   /* margin: 10px auto; */
@@ -48,21 +38,20 @@
   margin: 0 auto 20px;
   font-size: 12px;
 }
-
 h2 {
   text-align: center;
 }
-
 .input-line label {
-  flex: 0 0 auto;
-  /* הקטנת הרוחב של התגית */
-  margin: 0;
-  /* ביטול המרווח */
+  flex: 0 0 auto; /* הקטנת הרוחב של התגית */
+  margin: 0; /* ביטול המרווח */
 }
-
 .note {
+  /* margin-top: 20px; */
   font-size: 12px;
   margin-right: 5%;
+  /* line-height: 1.3; */
+  /* flex: 0 0 auto; */
+  /* margin: 0; */
 }
 
 .centered-inputs {
@@ -70,61 +59,45 @@ h2 {
   flex-direction: column;
   align-items: center;
 }
-
 .input-line input,
 .inline-input input {
   border: none;
   border-bottom: 1px solid #000;
   font-size: 16px;
-  padding: 1px 0;
+  /* padding: 1px 0;  */
   outline: none;
   background-color: transparent;
-  margin: 0;
-  /* ביטול המרווח */
-  flex: 1;
-  /* הגדרת גמישות */
+  /* margin: 0; 
+  flex: 1;  */
   max-width: 200px;
   text-align: right;
   line-height: 1.3;
 }
-
 .inline-input {
-  display: inline-flex;
-  /* מאפשר לאלמנטים להופיע באותה השורה */
-  align-items: center;
-  /* יישור אלמנטים אנכית */
-  width: auto;
-  /* התאמת הרוחב לתוכן */
+  display: inline-flex; 
+  /* align-items: center;  */
+  /* width: auto;  */
 }
-
-.input-label {
+.input-label{
   border: none;
   border-bottom: 1px solid #000;
-  padding: 3px 0;
+  padding: 3px 0; 
   /* font-family: David; */
   font-size: 16px;
   outline: none;
   background-color: transparent;
   margin: 0;
-  flex: 1;
-  /* גמישות מלאה לגדול לפי הצורך */
-  white-space: nowrap;
-  /* מונע מהטקסט לשבור שורה */
-  box-sizing: border-box;
-  /* כולל את גבול ה-border בגובה הכללי */
+  flex: 1; 
+  white-space: nowrap; 
+  box-sizing: border-box; 
 }
-
-.long-line {
-  min-width: 200px;
-  /* רוחב מינימלי של הפיסקה */
+.long-line{
+  min-width: 200px; /* רוחב מינימלי של הפיסקה */
 
 }
-
-.short-line {
-  min-width: 100px;
-  /* רוחב מינימלי של הפיסקה */
+.short-line{
+  min-width: 100px; /* רוחב מינימלי של הפיסקה */
 }
-
 button {
   display: block;
   margin-top: 10px;
@@ -144,14 +117,11 @@ button:disabled {
 button:hover {
   background-color: #0056b3;
 }
-
 .logo {
   display: block;
   margin: 0 auto 20px;
-  height: 30%;
-  /* גובה הלוגו */
-  width: 30%;
-  /* רוחב הלוגו */
+  height: 30%; /* גובה הלוגו */
+  width: 30%; /* רוחב הלוגו */
 }
 
 .footer {
@@ -171,8 +141,7 @@ button:hover {
 .logodown {
   display: block;
   margin: 0 auto 20px;
-  height: 10%;
-  /* גובה הלוגו */
+  height: 10%; /* גובה הלוגו */
   width: 10%;
 }
 
@@ -183,18 +152,14 @@ button:hover {
 }
 
 .input-line label {
-  flex: 0 0 auto;
-  /* מונע מה-label לגדול או להתכווץ */
-  margin-right: 10px;
-  /* מרווח קטן בין ה-label ל-input */
-  white-space: nowrap;
-  /* מונע מהטקסט לשבור שורה */
+  flex: 0 0 auto; 
+  margin-right: 10px; 
+  white-space: nowrap; 
 }
 
-.signature {
+.signature{
   margin-right: 9%;
 }
-
 .approval-section {
   direction: rtl;
   font-size: 12px;
@@ -210,21 +175,28 @@ button:hover {
   margin: 0 5px;
 }
 
-#toKosherInline {
-  min-width: 275px;
-  /* רוחב מינימלי של הפיסקה */
+#toKosherInline{
+  min-width: 275px; /* רוחב מינימלי של הפיסקה */
 }
 
-
-
-/* עיצוב רספונסיבי נוסף למסכים בינוניים */
-
-/* @media screen and (min-width: 412px) {
+@media(max-width: 412px) {
   .formContainer {
-    font-size: 16px;
-   
+    font-size: 10px;
   }
-
+  #p{
+    font-size: 10px;
+    margin-right: 5%;
+  }
+  .form2{
+    direction: rtl;
+    text-align: right;
+    border: 1px solid #000;
+    padding: 2px;
+    width: 80%;
+    display: block;
+    margin: 0 auto 20px;
+    font-size: 12px;
+  }
   .footer {
     font-size: 8x;
   }
@@ -235,260 +207,34 @@ button:hover {
 
   .logo {
     width: 25%;
-   
     height: auto;
     
   }
 
-  button {
-    padding: 10px 20px;
-    
-    margin-right: 10%;
-  
-  }
-
   .input-line input,
   .inline-input input {
-    font-size: 10px;
-  
+    font-size: 14px;
     max-width: 100px;
   }
 
   .note {
     font-size: 10px;
-    margin-right: 4%;
+    /* margin-right: 4%; */
   }
 
   .input-label {
-    font-size: 15px;
+    font-size: 10px;
    
   }
-
-  #toKosherInline {
-    min-width: 170px;
-   
-  }
-} */
-
-/* עיצוב להדפסה */
-@media print {
-  .formContainer {
-    direction: rtl;
-    /* יישור טקסט מימין לשמאל */
-    text-align: right;
-    /* יישור הטקסט בצד ימין */
-    padding: 10px;
-    /* border: 1px solid #000; */
-    margin: 10px auto;
-    width: 100%;
-    max-width: 600px;
-    /* הגבלת רוחב המיכל */
-    display: block;
-    margin: 0 auto 20px;
-    font-family: David;
-    font-size: 12px;
-  }
-
-  .centered-text {
-    display: block;
-    /* גורם לאלמנט לקחת שורה שלמה */
-    text-align: center;
-    /* יישור הטקסט למרכז */
-  }
-
-  .highlighted-text {
-    font-weight: bold;
-    /* הופך את הטקסט למודגש */
-    text-decoration: underline;
-    /* מוסיף קו תחתי */
-    display: inline-block;
-
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .form2 {
-    direction: rtl;
-    /* יישור טקסט מימין לשמאל */
-    text-align: right;
-    /* יישור הטקסט בצד ימין */
-    border: 1px solid #000;
-    padding: 2px;
-
-    width: 93%;
-    display: block;
-    margin: 0 auto 20px;
-    font-size: 12px;
-  }
-
-  h2 {
-    text-align: center;
-  }
-
   .input-line label {
     flex: 0 0 auto;
-    /* הקטנת הרוחב של התגית */
-    margin: 0;
-    /* ביטול המרווח */
-  }
-
-  .note {
-
-    font-size: 12px;
     margin-right: 5%;
-
-  }
-
-  .centered-inputs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .input-line input,
-  .inline-input input {
-    border: none;
-    border-bottom: 1px solid #000;
-    font-size: 16px;
-    padding: 1px 0;
-    outline: none;
-    background-color: transparent;
-    margin: 0;
-    /* ביטול המרווח */
-    flex: 1;
-    /* הגדרת גמישות */
-    max-width: 200px;
-    text-align: right;
-    line-height: 1.3;
-  }
-
-  .inline-input {
-    display: inline-flex;
-    /* מאפשר לאלמנטים להופיע באותה השורה */
-    align-items: center;
-    /* יישור אלמנטים אנכית */
-    width: auto;
-    /* התאמת הרוחב לתוכן */
-  }
-
-  .input-label {
-    border: none;
-    border-bottom: 1px solid #000;
-    padding: 3px 0;
-    /* font-family: David; */
-    font-size: 16px;
-    outline: none;
-    background-color: transparent;
-    margin: 0;
-    flex: 1;
-    /* גמישות מלאה לגדול לפי הצורך */
     white-space: nowrap;
-    /* מונע מהטקסט לשבור שורה */
-    box-sizing: border-box;
-    /* כולל את גבול ה-border בגובה הכללי */
   }
-
-  .long-line {
-    min-width: 200px;
-    /* רוחב מינימלי של הפיסקה */
-
-  }
-
-  .short-line {
-    min-width: 100px;
-    /* רוחב מינימלי של הפיסקה */
-  }
-
-  button {
-    display: block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 80%;
-  }
-
-  button:disabled {
-    background-color: #ccc;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  .logo {
-    display: block;
-    margin: 0 auto 20px;
-    height: 30%;
-    /* גובה הלוגו */
-    width: 30%;
-    /* רוחב הלוגו */
-  }
-
-  .footer {
-    color: #0056b3;
-    margin-top: 20px;
-    font-size: 12px;
-    line-height: 1.4;
-    border-top: 1px solid #000;
-    padding-top: 10px;
-    text-align: center;
-  }
-
-  .footer p {
-    margin: 5px 0;
-  }
-
-  .logodown {
-    display: block;
-    margin: 0 auto 20px;
-    height: 10%;
-    /* גובה הלוגו */
-    width: 10%;
-  }
-
-  .input-line {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .input-line label {
-    flex: 0 0 auto;
-    /* מונע מה-label לגדול או להתכווץ */
-    margin-right: 10px;
-    /* מרווח קטן בין ה-label ל-input */
-    white-space: nowrap;
-    /* מונע מהטקסט לשבור שורה */
-  }
-
-  .signature {
-    margin-right: 9%;
-  }
-
-  .approval-section {
-    direction: rtl;
-    font-size: 12px;
-    text-align: center;
-
-  }
-
-  .circle {
-    display: inline-block;
-    border: 2px solid black;
-    border-radius: 50%;
-    padding: 5px 10px;
-    margin: 0 5px;
-  }
-
   #toKosherInline {
-    min-width: 275px;
-    /* רוחב מינימלי של הפיסקה */
+    min-width: 200px;
+    font-size: 12px;
+   
   }
-
 }
+

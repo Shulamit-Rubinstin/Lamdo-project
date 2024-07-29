@@ -2,7 +2,7 @@
     <img class="logo" src="../../assets/לוגו משרד החינוך.png">
     
     <form [formGroup]="updateForm" >
-        <p>לכבוד: הורי התלמיד/ה</p>
+        <p id="p">לכבוד: הורי התלמיד/ה</p>
         <div class="input-line">
             <label for="institutionName">שם מוסד </label>
             <!-- <input id="institutionName" formControlName="institutionName" /> -->
@@ -28,18 +28,16 @@
                     <input id="fromKosherInline" formControlName="fromKosher" />
                 </span>
             </strong> אל כשרות: 
-            <strong>
                 <span class="inline-input ">
                     <input id="toKosherInline" formControlName="toKosher" readonly />
                 </span>
-            </strong>.<br><br>
+            .<br><br>
             ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
             1. שינוי הכשרות משמעו ייתכן שיוחלף ספק המזון שסיפק את המזון עבור המוסד החינוכי עד כה.<br>
             2. ניתן לבקש החלפת כשרות פעם אחת בשנה בלבד.<br>
             3. ניתן להחליף לכשרות מאושרת על ידי תכנית ההזנה בלבד.<br><br>
             נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי.<br>
-             לפיכך,
-            ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
+             לפיכך, ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
         </p>
         <div class="form2">
             <span class="inline-input">

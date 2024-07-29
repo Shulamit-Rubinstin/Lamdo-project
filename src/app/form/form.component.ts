@@ -123,20 +123,22 @@ export class FormComponent implements OnInit {
       let imgHeight = (imgProps.height * imgWidth) / imgProps.width;
 
       // אם התמונה גבוהה מדי, מתאימים לגובה של דף ה-PDF
-      // if (imgHeight > pdfHeight) {
-      //   imgWidth = (imgProps.width * pdfHeight) / imgProps.height;
-      //   imgHeight = pdfHeight;
-      // }
+      if (imgHeight > pdfHeight) {
+        imgWidth = (imgProps.width * pdfHeight) / imgProps.height;
+        imgHeight = pdfHeight;
+      }
       const xOffset = (pdfWidth - imgWidth) / 2; // התאמה במרכז לרוחב
       const yOffset = (pdfHeight - imgHeight) / 2; // התאמה במרכז לגובה
-      pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
+      pdf.addImage(imgData, 'JPEG', xOffset, 0, imgWidth, imgHeight);
+
+      pdf.save('d.pdf');
 
 
       const pdfBlob = pdf.output('blob');
 
-      this.convertBlobToBase64(pdfBlob).then(base64PDF => {
-        this.sendEmail(base64PDF);
-      });
+      // this.convertBlobToBase64(pdfBlob).then(base64PDF => {
+      //   this.sendEmail(base64PDF);
+      // });
     });
   }
 
