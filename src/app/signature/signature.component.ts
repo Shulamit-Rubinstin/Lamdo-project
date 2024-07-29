@@ -6,7 +6,7 @@ import { SignaturePadModule } from 'ngx-signaturepad';
   standalone: true,
   imports: [SignaturePadModule],
   templateUrl: './signature.component.html',
-  styleUrl: './signature.component.css'
+  styleUrls: ['./signature.component.css']
 })
 export class SignatureComponent implements AfterViewInit {
 
@@ -18,16 +18,24 @@ export class SignatureComponent implements AfterViewInit {
     const canvas = this.canvasElement.nativeElement;
     this.context = canvas.getContext('2d')!;
     this.context.lineWidth = 2;
-    this.context.strokeStyle = 'purple';
+    this.context.strokeStyle = 'purple'; // צבע הקווים
+
+    // הוספת מאזינים עבור עכבר
     canvas.addEventListener('mousedown', (event) => this.startDrawing(event));
     canvas.addEventListener('mouseup', () => this.stopDrawing());
     canvas.addEventListener('mousemove', (event) => this.draw(event));
+
+    // הוספת מאזינים עבור מסך מגע
+    canvas.addEventListener('touchstart', (event) => this.startDrawing(event as unknown as MouseEvent));
+    canvas.addEventListener('touchend', () => this.stopDrawing());
+    canvas.addEventListener('touchmove', (event) => this.draw(event as unknown as MouseEvent));
   }
 
-  private startDrawing(event: MouseEvent) {
+  private startDrawing(event: MouseEvent | TouchEvent) {
     this.isDrawing = true;
     this.context.beginPath();
-    this.context.moveTo(event.offsetX, event.offsetY);
+    const { x, y } = this.getCoords(event);
+    this.context.moveTo(x, y);
   }
 
   private stopDrawing() {
@@ -35,16 +43,26 @@ export class SignatureComponent implements AfterViewInit {
     this.context.closePath();
   }
 
-  private draw(event: MouseEvent) {
+  private draw(event: MouseEvent | TouchEvent) {
     if (!this.isDrawing) return;
-    this.context.lineTo(event.offsetX, event.offsetY);
+    const { x, y } = this.getCoords(event);
+    this.context.lineTo(x, y);
     this.context.stroke();
+  }
+
+  private getCoords(event: MouseEvent | TouchEvent) {
+    const canvas = this.canvasElement.nativeElement;
+    const rect = canvas.getBoundingClientRect();
+    const x = (event instanceof MouseEvent ? event.clientX : event.touches[0].clientX) - rect.left;
+    const y = (event instanceof MouseEvent ? event.clientY : event.touches[0].clientY) - rect.top;
+    return { x, y };
   }
 
   clearCanvas() {
     const canvas = this.canvasElement.nativeElement;
     this.context.clearRect(0, 0, canvas.width, canvas.height);
   }
+
   saveSignature() {
     const canvas = this.canvasElement.nativeElement;
     const dataURL = canvas.toDataURL();
@@ -57,4 +75,3 @@ export class SignatureComponent implements AfterViewInit {
     }
   }
 }
-
