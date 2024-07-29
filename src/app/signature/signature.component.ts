@@ -18,7 +18,7 @@ export class SignatureComponent implements AfterViewInit {
     const canvas = this.canvasElement.nativeElement;
     this.context = canvas.getContext('2d')!;
     this.context.lineWidth = 2;
-    this.context.strokeStyle = 'purple'; // צבע הקווים
+    this.context.strokeStyle = 'black'; // צבע הקווים
 
     // הוספת מאזינים עבור עכבר
     canvas.addEventListener('mousedown', (event) => this.startDrawing(event));
