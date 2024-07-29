@@ -78,11 +78,9 @@ export class FormComponent implements OnInit {
     const templateParams = {
       pdfBase64String: base64PDF
     };
-
-    emailjs
-      .send('service_sslvwl8', 'template_d7ffwxm', templateParams,
-        'WYEy2hfn7R_lvrv4e',
-      )
+    emailjs.send("service_sslvwl8","template_d7ffwxm",{
+      pdf: base64PDF,
+      },'WYEy2hfn7R_lvrv4e',)
       .then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text, templateParams);
@@ -91,17 +89,5 @@ export class FormComponent implements OnInit {
           console.log('FAILED...', error);
         }
       );
-  }
-  sendCanvasAsAttachment(pdfBase64String: string) {
-    emailjs.send('service_sslvwl8', 'template_lcl444n', {
-      content: pdfBase64String
-    }, 'WYEy2hfn7R_lvrv4e').then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
-      },
-      (error) => {
-        console.log('FAILED...', error);
-      }
-    );
   }
 }
