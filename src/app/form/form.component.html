@@ -1,11 +1,14 @@
-<div #formContainer class="formContainer">
+<div #formContainer class="formContainer"
+>
     <img class="logo" src="../../assets/לוגו משרד החינוך.png">
     
     <form [formGroup]="updateForm" >
         <p>לכבוד: הורי התלמיד/ה</p>
         <div class="input-line">
             <label for="institutionName">שם מוסד </label>
-            <input id="institutionName" formControlName="institutionName" />
+            <!-- <input id="institutionName" formControlName="institutionName" /> -->
+            <input type="url" id="institutionName" formControlName="institutionName" required>
+
         </div>
         <div class="input-line">
             <label for="institutionSergeant">סמל מוסד </label>
@@ -86,6 +89,7 @@
             </div>
         </div>
         <button type="button" (click)="generatePDF()">שליחה</button>
+        <!-- <button type="submit">Send</button> -->
         <!-- <button type="submit" [disabled]="!updateForm.valid">Submit</button> -->
     </form>
 

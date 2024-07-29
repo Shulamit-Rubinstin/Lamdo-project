@@ -1,4 +1,3 @@
-
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; // הוסף כאן
@@ -59,39 +58,50 @@ export class FormComponent implements OnInit {
 
       const pdfBlob = pdf.output('blob');
 
-      pdf.save('document.pdf');
-      this.sendMail();
-
+      this.convertBlobToBase64(pdfBlob).then(base64PDF => {
+        this.sendEmail(base64PDF);
+      });
     });
   }
-  sendMail() {
-    if (this.pdfFile) {
-      console.log("in mail!!!")
+
+  public convertBlobToBase64(blob: Blob): Promise<string> {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => {
-        const base64File = reader.result?.toString().split(',')[1];
-        const templateParams = {
-          to_email: 'r0533147262@gmail.com',
-          subject: 'Test Subject',
-          message: 'Test Body',
-          attachments: [
-            {
-              name: 'document.pdf',
-              data: base64File,
-            },
-          ],
-        };
-        emailjs.send('service_w69f64v', 'template_828xdaa', { content: base64File }, '4_U5BxpQyvCU_USyQ')
-          .then((response: EmailJSResponseStatus) => {
-            console.log("Mail sent successfully!", response.status, response.text);
-          }).catch((error) => {
-            console.error("Failed to send mail:", error);
-          });
-      };
-      //  reader.readAsDataURL(this.pdfFile);
-    } else {
-      alert('Please generate the PDF before sending.');
-    }
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  public sendEmail(base64PDF: string) {
+    console.log('Sending email...');
+    const templateParams = {
+      pdfBase64String: base64PDF
+    };
+
+    emailjs
+      .send('service_sslvwl8', 'template_d7ffwxm', templateParams,
+        'WYEy2hfn7R_lvrv4e',
+      )
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text, templateParams);
+        },
+        (error) => {
+          console.log('FAILED...', error);
+        }
+      );
+  }
+  sendCanvasAsAttachment(pdfBase64String: string) {
+    emailjs.send('service_sslvwl8', 'template_lcl444n', {
+      content: pdfBase64String
+    }, 'WYEy2hfn7R_lvrv4e').then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      }
+    );
   }
 }
-
