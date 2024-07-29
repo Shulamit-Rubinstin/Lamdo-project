@@ -131,14 +131,14 @@ export class FormComponent implements OnInit {
       const yOffset = (pdfHeight - imgHeight) / 2; // התאמה במרכז לגובה
       pdf.addImage(imgData, 'JPEG', xOffset, 0, imgWidth, imgHeight);
 
-      pdf.save('d.pdf');
+      // pdf.save('d.pdf');
 
 
       const pdfBlob = pdf.output('blob');
 
-      // this.convertBlobToBase64(pdfBlob).then(base64PDF => {
-      //   this.sendEmail(base64PDF);
-      // });
+      this.convertBlobToBase64(pdfBlob).then(base64PDF => {
+        this.sendEmail(base64PDF);
+      });
     });
   }
 
