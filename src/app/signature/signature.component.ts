@@ -6,7 +6,7 @@ import { SignaturePadModule } from 'ngx-signaturepad';
   standalone: true,
   imports: [SignaturePadModule],
   templateUrl: './signature.component.html',
-  styleUrls: ['./signature.component.css']
+  styleUrl: './signature.component.css'
 })
 export class SignatureComponent implements AfterViewInit {
 
@@ -75,3 +75,4 @@ export class SignatureComponent implements AfterViewInit {
     }
   }
 }
+
