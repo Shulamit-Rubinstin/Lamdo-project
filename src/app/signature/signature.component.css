@@ -1,12 +1,12 @@
 
 .canvas-element {
-  border-bottom: 1px solid #000; /* Add a bottom border instead of a full border */
+  border-bottom: 1px solid #000; 
   cursor: crosshair;
   margin-bottom: 10px; /* Adjust margin at the bottom of the canvas */
 }
 @media (max-width: 600px) {
   .canvas-element {
-    border-bottom: 1px solid #000; /* Add a bottom border instead of a full border */
+    border-bottom: 1px solid #000; 
     cursor: crosshair;
     margin-bottom: 10px; 
   }
