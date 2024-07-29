@@ -1,5 +1,4 @@
-<div #formContainer class="formContainer"
->
+<div #formContainer class="formContainer" *ngIf="!showSuccessMessage">
     <img class="logo" src="../../assets/לוגו משרד החינוך.png">
     
     <form [formGroup]="updateForm" >
@@ -103,4 +102,7 @@
         <p>מסמך זה עלול להכיל מידע המוגן לפי חוק הגנת הפרטיות – מוסרו שלא כדין עובר עבירה</p>
         <img class="logodown" src="../../assets/לוגו למטה.png">
     </div>
+</div>
+<div *ngIf="showSuccessMessage">
+    <app-success-message></app-success-message>
 </div>
