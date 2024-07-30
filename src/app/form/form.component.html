@@ -5,8 +5,8 @@
         <p id="p">לכבוד: הורי התלמיד/ה</p>
         <div class="input-line">
             <label for="institutionName">שם מוסד </label>
-            <!-- <input id="institutionName" formControlName="institutionName" /> -->
-            <input type="url" id="institutionName" formControlName="institutionName" required>
+            <input id="institutionName" formControlName="institutionName" />
+            <!-- <input type="url" id="institutionName" formControlName="institutionName" required> -->
 
         </div>
         <div class="input-line">
@@ -27,10 +27,8 @@
                 <span class="inline-input">
                     <input id="fromKosherInline" formControlName="fromKosher" />
                 </span>
-            </strong> אל כשרות: 
-                <span class="inline-input ">
-                    <input id="toKosherInline" formControlName="toKosher" readonly />
-                </span>
+            </strong> אל כשרות:  
+            <span class="input-label short-line">{{ updateForm.get('toKosher')?.value }}</span>
             .<br><br>
             ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
             1. שינוי הכשרות משמעו ייתכן שיוחלף ספק המזון שסיפק את המזון עבור המוסד החינוכי עד כה.<br>
