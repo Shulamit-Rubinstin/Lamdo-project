@@ -1,21 +1,19 @@
 <div #formContainer class="formContainer" *ngIf="!showSuccessMessage">
     <img class="logo" src="../../assets/לוגו משרד החינוך.png">
-    
-    <form [formGroup]="updateForm" >
-        <p id="p">לכבוד: הורי התלמיד/ה</p>
-        <div class="input-line">
-            <label for="institutionName">שם מוסד </label>
-            <input id="institutionName" formControlName="institutionName" />
-            <!-- <input type="url" id="institutionName" formControlName="institutionName" required> -->
 
+    <form [formGroup]="updateForm">
+        <p id="p">לכבוד: הורי התלמיד/ה</p>
+        <div>
+            <label for="institutionName">שם מוסד </label>
+            <input class="institutionName" formControlName="institutionName" />
         </div>
-        <div class="input-line">
+        <div>
             <label for="institutionSergeant">סמל מוסד </label>
-            <input id="institutionSergeant" formControlName="institutionSergeant" />
+            <input class="institutionName" formControlName="institutionSergeant" />
         </div>
-        <div class="input-line">
+        <div>
             <label for="permission">רשות </label>
-            <input id="permission" formControlName="permission" />
+            <input class="institutionName" formControlName="permission" />
         </div>
         <p class="note ">
             שלום וברכה,<br>
@@ -25,9 +23,9 @@
             לאור בקשת הנהלת המוסד בו לומד ילדכם להחלפת הכשרות של ארוחת הצהריים מכשרות
             <strong>
                 <span class="inline-input">
-                    <input id="fromKosherInline" formControlName="fromKosher" />
+                    <input class="institutionName" formControlName="fromKosher" />
                 </span>
-            </strong> אל כשרות:  
+            </strong> אל כשרות:
             <span class="input-label short-line">{{ updateForm.get('toKosher')?.value }}</span>
             .<br><br>
             ברצוננו להביא לידיעתכם מידע הקשור לבקשה לשינוי, שיסייע בידכם לקבל החלטה.<br><br>
@@ -35,7 +33,7 @@
             2. ניתן לבקש החלפת כשרות פעם אחת בשנה בלבד.<br>
             3. ניתן להחליף לכשרות מאושרת על ידי תכנית ההזנה בלבד.<br><br>
             נבהיר כי על מנת לאשר החלפת כשרות במוסד החינוכי, נדרשת הסכמה של לפחות 65% מכלל ההורים במוסד החינוכי.<br>
-             לפיכך, ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
+            לפיכך, ככל שהנכם מעוניינים בשינוי הכשרות, הנכם מתבקשים לאשר שינוי זה בכתב.
         </p>
         <div class="form2">
             <span class="inline-input">
@@ -52,18 +50,18 @@
             </div>
             <div class="inline-input">
                 <label for="institutionNameF">שם מוסד: </label>
-                <p class="input-label long-line" >{{ updateForm.get('institutionName')?.value }}
+                <p class="input-label long-line">{{ updateForm.get('institutionName')?.value }}
                 </p>
             </div>
             <div class="inline-input">
                 <label for="permissionF"> רשות: </label>
-                <p class="input-label long-line" >{{ updateForm.get('permission')?.value }}</p>
+                <p class="input-label long-line">{{ updateForm.get('permission')?.value }}</p>
             </div>
             <div class="approval-section">
                 <p>
-                  <span class="circle">הנני מאשר</span> / לא מאשר (יש להקיף בעיגול) שינוי הכשרות במוסד
+                    <span class="circle">הנני מאשר</span> / לא מאשר (יש להקיף בעיגול) שינוי הכשרות במוסד
                 </p>
-              </div>              
+            </div>
             <div class="centered-inputs">
                 <div class="input-line">
                     <label for="fromKosherF">מכשרות: </label>
@@ -71,11 +69,11 @@
                 </div>
                 <div class="input-line ">
                     <label class="input-line-c" for="toKosherF">לכשרות: </label>
-                    <p class="input-label short-line" >{{ updateForm.get('toKosher')?.value }}</p>
+                    <p class="input-label short-line">{{ updateForm.get('toKosher')?.value }}</p>
                 </div>
                 <div class="input-line">
                     <label for="date">תאריך:</label>
-                    <p class="input-label short-line">  {{ updateForm.get('date')?.value | dateFormat }}</p>
+                    <p class="input-label short-line"> {{ updateForm.get('date')?.value | dateFormat }}</p>
                 </div>
                 <div class="input-line signature">
                     <label for="signature">חתימה:</label>
